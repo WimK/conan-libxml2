@@ -13,8 +13,8 @@ class LibxmlConan(ConanFile):
     settings =  "os", "compiler", "arch", "build_type"
     options = {"shared": [True, False]}
     default_options = "shared=False"
-    exports = ["CMakeLists.txt", "FindLibXml2.cmake"]
-    url = "http://github.com/lasote/conan-libxml2"
+    exports = ["CMakeLists.txt", "LIBXML2Config.cmake"]
+    url = "http://github.com/WimK/conan-libxml2"
     requires = "zlib/1.2.8@lasote/stable"
 
     def source(self):
@@ -95,7 +95,7 @@ class LibxmlConan(ConanFile):
 
     def package(self):
         # Copy findZLIB.cmake to package
-        self.copy("FindLibXml2.cmake", ".", ".")
+        self.copy("LIBXML2Config.cmake", ".", ".")
        
        
         self.copy("*.h", "include", "%s/include" % (self.ZIP_FOLDER_NAME), keep_path=True)
